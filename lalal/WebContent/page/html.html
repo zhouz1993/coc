@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script>
+
+   function yincang(){
+  	var v_file=document.getElementById('v_file');
+  	v_file.click();
+   }
+
+   function play(){
+  	 var file = document.getElementById('v_file').files[0];
+              var url = URL.createObjectURL(file);
+              console.log(url);
+              document.getElementById("video_id").src = url;
+  	}
+
+
+    function yincang2(){
+   	var v_file2=document.getElementById('v_file2');
+   	v_file2.click();
+    }
+
+    function play2(){
+   	 var file = document.getElementById('v_file2').files[0];
+     var url = URL.createObjectURL(file);
+     console.log(url);
+     document.getElementById("video_id2").src = url;
+   	}
+  </script>
+
+  <style>
+    .content{
+      float: left;
+    }
+    .conhjh{
+      padding-left: 40px;
+    }
+
+    #play{
+      width: 60px;
+      height: 40px;
+      color: #0f0;
+    }
+
+    #video_id{
+      width: 400px;
+      height: 250px;
+      background-color: #0d0;
+    }
+
+    #play2{
+      width: 60px;
+      height: 40px;
+      color: #0f0;
+    }
+
+    #video_id2{
+      width: 400px;
+      height: 250px;
+      background-color: #0da;
+    }
+    .imgss{
+      width: 230px;
+      height: 300px;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="content">
+
+  <input id="v_file" type="file" style="display:none;" onChange="play()"/>
+
+  <button id="play" onClick="yincang()">播放</button>
+
+  <video id="video_id" controls autoplay></video>
+
+</div>
+
+<div class="content conhjh">
+  <input id="v_file2" type="file" style="display:none;" onChange="play2()"/>
+
+  <button id="play2" onClick="yincang2()">播放2</button>
+
+  <video id="video_id2" controls autoplay></video>
+
+</div>
+
+<div class="content2">
+    <img class="imgss" src="F:\百度云啦啦\小虎牙\1424533215536.jpg">
+    <img class="imgss" src="F:\百度云啦啦\小虎牙\1428208003220.jpg">
+    <img class="imgss" src="F:\百度云啦啦\小虎牙\mmexport1446901767774.jpg">
+    <img class="imgss" src="F:\百度云啦啦\小虎牙\nullacc0b1bf079a90.jpg">
+    <img class="imgss" src="F:\百度云啦啦\小虎牙\psbCAHJSFF0.jpg">
+    <img class="imgss" style="width:300px;" src="F:\百度云啦啦\小虎牙\psbqasa.jpg" onclick="_blank">
+</div>
+
+</body>
+</html>

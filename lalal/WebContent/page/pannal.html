@@ -1,0 +1,284 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-table.css">
+    <script type="text/javascript" src="../js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-table-zh-CN.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul role="tablist" class="allTabs nav navbar-nav">
+                    <li role="presentation" class="active"><a href="#tibame" aria-controls="tibame" role="tab" data-toggle="tab">Tibame</a></li>
+                    <li role="presentation"><a href="#courseStore" aria-controls="courseStore" role="tab" data-toggle="tab">課程庫</a></li>
+                    <li role="presentation"><a href="#bbs" aria-controls="bbs" role="tab" data-toggle="tab">討論區</a></li>
+                    <li role="presentation"><a href="#studyCenter" aria-controls="studyCenter" role="tab" data-toggle="tab">學習中心</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理工具<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li role="presentation"><a href="#dataImport" aria-controls="dataImport" role="tab" data-toggle="tab">數據匯入</a></li>
+                            <li role="presentation"><a href="#learningReport" aria-controls="learningReport" role="tab" data-toggle="tab">學習報表</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#searching" aria-controls="searching" role="tab" data-toggle="tab">搜尋</a></li>
+                    <li><a href="#shoppingCart" aria-controls="shoppingCart" role="tab" data-toggle="tab">購物車(3)</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alan<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li role="presentation"><a href="#test" aria-controls="test" role="tab" data-toggle="tab">test</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="tibame">tibame</div>
+        <div role="tabpanel" class="tab-pane" id="courseStore">courseStore</div>
+        <div role="tabpanel" class="tab-pane" id="bbs">bbs</div>
+        <div role="tabpanel" class="tab-pane" id="studyCenter">studyCenter</div>
+        <div role="tabpanel" class="tab-pane" id="dataImport">
+            <div>
+                <!-- Nav tabs -->
+                <ul class="allTabs nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#addMember" aria-controls="addMember" role="tab" data-toggle="tab">新增會員</a></li>
+                    <li role="presentation"><a href="#addCourse" aria-controls="addCourse" role="tab" data-toggle="tab">派課</a></li>
+                    <li role="presentation"><a href="#dataStatus" aria-controls="dataStatus" role="tab" data-toggle="tab">數據建立狀態</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- 新增会员 -->
+                    <div role="tabpanel" class="tab-pane active" id="addMember">
+                        <button type="button" data-toggle="modal" data-target="#data-input" data-loading-text="匯入資料" class="btn btn-primary" id="dataImportBtn">匯入資料</button>
+                        <div class="modal fade" id="data-input" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="addMemberForm" method="post" action="#" enctype="multipart/form-data">
+                                            <input type="file" name="f1"><br />
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button id="addMemberSubmit" type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" data-loading-text="確認新增" class="btn btn-primary" autocomplete="off" id="dataImportSureBtn">確認新增</button>
+                        <table id="importDataTable"></table>
+                    </div>
+                    <!-- 派课 -->
+                    <div role="tabpanel" class="tab-pane" id="addCourse">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-primary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+  </label>
+                            <label class="btn btn-primary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+  </label>
+                            <label class="btn btn-primary">
+    <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+  </label>
+                        </div>
+                    </div>
+                    <!-- 数据建立状态 -->
+                    <div role="tabpanel" class="tab-pane" id="dataStatus">dataStatus</div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="learningReport">learningReport</div>
+        <div role="tabpanel" class="tab-pane" id="searching">searching</div>
+        <div role="tabpanel" class="tab-pane" id="shoppingCart">shoppingCart</div>
+        <div role="tabpanel" class="tab-pane" id="test">test</div>
+    </div>
+</body>
+
+<script>
+    var addMemberArr = [{
+        name: '张三',
+        account: 'san_zhang@163.com',
+        password: '123456',
+        nickName: '张三',
+        phone: '123456',
+        tel: '123456',
+        tag: '企业包班, 淡江大学合作案Q4',
+        school: '淡江大学',
+        college: '商学院',
+        s_department: '经济系',
+        s_number: '105236542',
+        company: 'Wiedu',
+        c_department: '商业分析部门',
+        c_number: '105236542',
+        role: '学员'
+
+    }, {
+        name: '张三',
+        account: 'san_zhang@163.com',
+        password: '123456',
+        nickName: '张三',
+        phone: '123456',
+        tel: '123456',
+        tag: '企业包班, 淡江大学合作案Q4',
+        school: '淡江大学',
+        college: '商学院',
+        s_department: '经济系',
+        s_number: '105236542',
+        company: 'Wiedu',
+        c_department: '商业分析部门',
+        c_number: '105236542',
+        role: '学员'
+
+    }, {
+        name: '张三',
+        account: 'san_zhang@163.com',
+        password: '123456',
+        nickName: '张三',
+        phone: '123456',
+        tel: '123456',
+        tag: '企业包班, 淡江大学合作案Q4',
+        school: '淡江大学',
+        college: '商学院',
+        s_department: '经济系',
+        s_number: '105236542',
+        company: 'Wiedu',
+        c_department: '商业分析部门',
+        c_number: '105236542',
+        role: '学员'
+
+    }, {
+        name: '张三',
+        account: 'san_zhang@163.com',
+        password: '123456',
+        nickName: '张三',
+        phone: '123456',
+        tel: '123456',
+        tag: '企业包班, 淡江大学合作案Q4',
+        school: '淡江大学',
+        college: '商学院',
+        s_department: '经济系',
+        s_number: '105236542',
+        company: 'Wiedu',
+        c_department: '商业分析部门',
+        c_number: '105236542',
+        role: '学员'
+
+    }, {
+        name: '张三',
+        account: 'san_zhang@163.com',
+        password: '123456',
+        nickName: '张三',
+        phone: '123456',
+        tel: '123456',
+        tag: '企业包班, 淡江大学合作案Q4',
+        school: '淡江大学',
+        college: '商学院',
+        s_department: '经济系',
+        s_number: '105236542',
+        company: 'Wiedu',
+        c_department: '商业分析部门',
+        c_number: '105236542',
+        role: '学员'
+
+    }, {
+        name: '张三',
+        account: 'san_zhang@163.com',
+        password: '123456',
+        nickName: '张三',
+        phone: '123456',
+        tel: '123456',
+        tag: '企业包班, 淡江大学合作案Q4',
+        school: '淡江大学',
+        college: '商学院',
+        s_department: '经济系',
+        s_number: '105236542',
+        company: 'Wiedu',
+        c_department: '商业分析部门',
+        c_number: '105236542',
+        role: '学员'
+    }];
+    $('#dataImportSureBtn').on('click', function() {});
+    $('#importDataTable').bootstrapTable({
+        columns: [{
+            field: 'name',
+            title: '姓名'
+        }, {
+            field: 'account',
+            title: 'Email(账号)'
+        }, {
+            field: 'password',
+            title: '密码'
+        }, {
+            field: 'nickName',
+            title: '昵称'
+        }, {
+            field: 'phone',
+            title: '手机'
+        }, {
+            field: 'tel',
+            title: '市话'
+        }, {
+            field: 'tag',
+            title: 'Tag'
+        }, {
+            field: 'school',
+            title: '学校'
+        }, {
+            field: 'college',
+            title: '学院'
+        }, {
+            field: 's_department',
+            title: '系所'
+        }, {
+            field: 's_number',
+            title: '学号'
+        }, {
+            field: 'company',
+            title: '公司'
+        }, {
+            field: 'c_department',
+            title: '公司部门'
+        }, {
+            field: 'c_number',
+            title: '工号'
+        }, {
+            field: 'role',
+            title: '角色'
+        }],
+        data: addMemberArr
+    });
+
+
+    $("#addMemberSubmit").on("click", function() {
+        console.log($(this));
+        // $("#addMemberForm").ajaxSubmit({
+        //     type: 'post',
+        //     url: 'p.php',
+        //     success: function(data) {
+        //         console.log(data);
+        //     },
+        //     error: function(XmlHttpRequest, textStatus, errorThrown) {
+        //         console.log(XmlHttpRequest);
+        //         console.log(textStatus);
+        //         console.log(errorThrown);
+        //     }
+        // });
+    });
+</script>
+</html>

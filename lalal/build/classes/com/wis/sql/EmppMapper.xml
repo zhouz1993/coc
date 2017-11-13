@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.wis.DAO.EmppDAO">
+
+	<!-- 查询Empp所有的内容 -->
+	<select id="findAll" resultType="com.wis.entity.Empp">
+		select empno,ename,age,deptno,hiredate,salary from emp order by empno asc
+	</select>
+  
+  	<select id="findEmp" resultType="com.wis.entity.Empp"  parameterType="int">
+  		select empno,ename,age,deptno,hiredate,salary from emp where empno= #{empno}
+  	</select>
+  
+  	<select id="findEmpByName" resultType="com.wis.entity.Empp"  parameterType="String">
+  		select empno,ename,age,deptno,hiredate,salary from emp where ename like concat('%',#{ename},'%') order by empno asc
+  	</select>
+  
+
+	<!-- 增加内容 -->
+	<insert id="add" parameterType="com.wis.entity.Empp">
+		insert into emp values
+		(#{empno},#{ename},#{age},#{deptno},#{hiredate},#{salary})
+	</insert>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="int">
+		delete from emp where
+		empno=#{empno}
+	</delete>
+
+	<!-- 数据更新   -->
+	<update id="update" parameterType="com.wis.entity.Empp">
+		update emp set
+		ename=#{ename},age=#{age},deptno=#{deptno},hiredate=#{hiredate},salary=#{salary} where
+		empno=#{empno};
+	</update>
+
+
+
+</mapper>

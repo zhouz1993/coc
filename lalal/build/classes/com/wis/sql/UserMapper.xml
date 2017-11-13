@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.wis.DAO.UserDAO">
+	<!-- 查询user所有的内容 -->
+	<select id="findByUser" resultType="com.wis.entity.User" parameterType="string">
+		select name,password from user_emp where name=#{name}
+	</select>
+	
+	<insert id="register" parameterType="com.wis.entity.User">
+		insert into user_emp values(#{name},#{password})
+	</insert>
+
+</mapper>

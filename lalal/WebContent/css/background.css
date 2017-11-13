@@ -1,0 +1,22 @@
+body {
+	background-image: url('../image/pic.jpg');
+	background-repeat:repeat;
+}
+table{
+	background:#fff;
+}
+
+	 .d2{
+            position: absolute;         
+            top: 50px;
+            left: 550px;
+            background-color: #bbddbb;
+        }
+      .tb11{
+      		background-color: #bbddbb;
+      }
+
+	#tab1{
+	cellpadding:10px;
+	border:1px solid;
+	}

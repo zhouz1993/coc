@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-table.css">
+    <script type="text/javascript" src="../js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-table-zh-CN.js"></script>
+    
+    <script type="text/javascript"
+	src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js"
+	charset="utf-8" data-callback="true"></script>
+</head>
+
+<body>
+	<ul class="nav nav-pills nav-justified">
+  		<li role="presentation" class="active"><a href="#Home" aria-controls="Home" role="tab" data-toggle="tab">Home</a></li>
+  		<li role="presentation"><a href="#Profile" aria-controls="Profile" role="tab" data-toggle="tab">Profile</a></li>
+  		<li role="presentation"><a href="#Messages" aria-controls="Messages" role="tab" data-toggle="tab">Messages</a></li>
+	</ul>
+	
+    <div class="tab-content">
+       <div role="tabpanel" class="tab-pane" id="Home" style="text-align:center;">
+       		<h1>Home Space</h1>
+       </div>
+       <div role="tabpanel" class="tab-pane" id="Profile" style="text-align:center;">
+       		<h1>HELLO WORLD</h1>
+       </div>
+       
+       <div role="tabpanel" class="tab-pane" id="Messages" style="text-align:center;"><br/>
+        <div style="width:800px;height:236px;margin:0 auto;" >
+        	<table id="importDataTable"></table>
+        </div>
+       </div>
+       
+       <div id="tools">tool bottom</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+$('#importDataTable').bootstrapTable({
+	// url: '/Home/GetDepartment',         //请求后台的URL（*）
+  //   method: 'get',                      //请求方式（*）
+     toolbar: '#tools',                //工具按钮用哪个容器
+     striped: true,                      //是否显示行间隔色
+     cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+     pagination: true,                   //是否显示分页（*）
+     sortable: false,                     //是否启用排序
+     sortOrder: "asc",                   //排序方式
+  //   queryParams: oTableInit.queryParams,//传递参数（*）
+     sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+     pageNumber:1,                       //初始化加载第一页，默认第一页
+     pageSize: 5,                       //每页的记录行数（*）
+     pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+     search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+     strictSearch: true,
+     showColumns: true,                  //是否显示所有的列
+     showRefresh: true,                  //是否显示刷新按钮
+     minimumCountColumns: 5,             //最少允许的列数
+     clickToSelect: true,                //是否启用点击选中行
+  //   height: 350,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+     uniqueId: "name",                     //每一行的唯一标识，一般为主键列
+     showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+     cardView: false,                    //是否显示详细视图
+     detailView: false,                   //是否显示父子表
+    columns: [{
+        field: 'name',
+        title: '姓名'
+    },{
+        field: 'account',
+        title: 'Email(账号)'
+    }, {
+        field: 'password',
+        title: '密码'
+    }, {
+        field: 'nickName',
+        title: '昵称'
+    }, {
+        field: 'phone',
+        title: '手机'
+    }, {
+        field: 'school',
+        title: '学校'
+    }, {
+        field: 'college',
+        title: '学院'
+    }],
+    data: [{
+        name: '张三1',
+        account: 'san_zhang@163.com',
+        password: '123456',
+        nickName: '张三w',
+        phone: '123456',
+        tel: '123456',
+        tag: '企业包班, 淡江大学合作案Q4',
+        school: '淡江大学',
+        college: '商学院'
+    },{
+    	 name: '张三2',
+         account: 'san_zhang@163.com',
+         password: '123456',
+         nickName: '张三',
+         phone: '123456',
+         tel: '123456',
+         tag: '企业包班, 淡江大学合作案Q4',
+         school: '淡江大学',
+         college: '商学院'
+    },{
+    	 name: '张三3',
+         account: 'san_zhang@163.com',
+         password: '123456',
+         nickName: '张三4',
+         phone: '123456',
+         tel: '123456',
+         tag: '企业包班, 淡江大学合作案Q4',
+         school: '淡江大学',
+         college: '商学院'
+    },{
+    	 name: '张三5',
+         account: 'san_zhang@163.com',
+         password: '123456',
+         nickName: '张三',
+         phone: '123456',
+         tel: '123456',
+         tag: '企业包班, 淡江大学合作案Q4',
+         school: '淡江大学',
+         college: '商学院'
+    },{
+    	 name: '张三6',
+         account: 'san_zhang@163.com',
+         password: '123456',
+         nickName: '张三',
+         phone: '123456',
+         tel: '123456',
+         tag: '企业包班, 淡江大学合作案Q4',
+         school: '淡江大学',
+         college: '商学院'
+    },{
+    	 name: '张三7',
+         account: 'san_zhang@163.com',
+         password: '123456',
+         nickName: '张三',
+         phone: '123456',
+         tel: '123456',
+         tag: '企业包班, 淡江大学合作案Q4',
+         school: '淡江大学',
+         college: '商学院'
+    },{
+    	 name: '张三8',
+         account: 'san_zhang@163.com',
+         password: '123456',
+         nickName: '张三',
+         phone: '123456',
+         tel: '123456',
+         tag: '企业包班, 淡江大学合作案Q4',
+         school: '淡江大学',
+         college: '商学院'
+    },{
+    	 name: '张三9',
+         account: 'san_zhang@163.com',
+         password: '123456',
+         nickName: '张三',
+         phone: '123456',
+         tel: '123456',
+         tag: '企业包班, 淡江大学合作案Q4',
+         school: '淡江大学',
+         college: '商学院'
+    },{
+    	 name: '张三0',
+         account: 'san_zhang@163.com',
+         password: '123456',
+         nickName: '张三',
+         phone: '123456',
+         tel: '123456',
+         tag: '企业包班, 淡江大学合作案Q4',
+         school: '淡江大学',
+         college: '商学院'
+    }]
+});
+</script>
+</html>
