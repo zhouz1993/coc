@@ -14,13 +14,13 @@ import java.util.Scanner;
  * 客户端应用程序
  * 第一步:实现向服务器发送一条信息
 */
-public class Client3 {
+public class Client4 {
 	//客户端Socket
 	private Socket socket;
 	/**
      * 构造方法，用于初始化
      */
-	public Client3(){
+	public Client4(){
 		try {
 			socket = new Socket("localhost",8088);
 		} catch (Exception e) {
@@ -68,7 +68,7 @@ public class Client3 {
 	}
 	
 	public static void main(String[] args) {
-		Client3 client = new Client3();
+		Client4 client = new Client4();
 		client.start();
 	}
 	

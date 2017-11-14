@@ -11,23 +11,30 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 服务端应用程序
  */
-public class Server3 {
+public class Server4 {
 	// 服务端Socket
 	private ServerSocket serverSocket;
 	 // 所有客户端输出流
 	private List<PrintWriter> allOut;
 	
+	//线程池
+	private ExecutorService threadPool;
 	/**
      * 构造方法，用于初始化
      */
-	public Server3(){
+	public Server4(){
 		try {
 			serverSocket = new ServerSocket(8088);
 			allOut = new ArrayList<PrintWriter>();
+			
+			threadPool = Executors.newFixedThreadPool(40);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -38,16 +45,20 @@ public class Server3 {
      */
 	public void start(){
 		try {
-			System.out.println("等待客户端连接...");
-			//监听客户端的连接
-			Socket socket = serverSocket.accept();
-			System.out.println(socket);
-			System.out.println("客户端已连接!");
-			
-			//启动一个线程来完成针对该客户端的交互
-			ClientHandler handler = new ClientHandler(socket);
-			new Thread(handler).start();
-			
+			 //循环监听客户端的连接
+			while(true){
+				System.out.println("等待客户端连接...");
+				//监听客户端的连接
+				Socket socket = serverSocket.accept();
+				System.out.println(socket);
+				System.out.println("客户端("+ socket.getInetAddress()+")已连接!");
+				
+				//启动一个线程来完成针对该客户端的交互
+				ClientHandler handler = new ClientHandler(socket);
+				//new Thread(handler).start();
+				threadPool.execute(handler);    //使用线程池
+				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -56,9 +67,40 @@ public class Server3 {
 	
 	
 	public static void main(String[] args){
-		Server3 server = new Server3();
+		Server4 server = new Server4();
 		server.start();
 	}
+	
+	/**
+	 * 将输出流存入共享集合，与下面两个方法互斥，保证同步安全
+	 * @param out
+	 */
+	private synchronized void addOut(PrintWriter out){
+		allOut.add(out);
+	}
+	
+	/**
+	 * 将给定输出流从共享集合删除
+	 * @param out
+	 */
+	private synchronized void removeOut(PrintWriter out){
+		allOut.remove(out);
+	}
+	
+	/**
+	 * 将消息发送给所有客户端
+	 * @param message
+	 */
+	private synchronized void sendMessage(String message,Socket socket){
+		for(PrintWriter o : allOut){
+		//	o.println(message);
+			o.println(socket.getInetAddress()+" : "+message);
+		}
+	}
+	
+	
+	
+	
 	
 	/**
 	 * 线程体，用于并发处理不同客户端的交互
@@ -83,8 +125,9 @@ public class Server3 {
 				pw = new PrintWriter(osw,true);
 				/*
                  * 将用户信息存入共享集合
+                 * 需要同步
                  */
-				allOut.add(pw);
+				addOut(pw);
 				
 				InputStream in = socket.getInputStream();
 				InputStreamReader isr = new InputStreamReader(in,"UTF-8");
@@ -94,21 +137,20 @@ public class Server3 {
 				while((message = br.readLine()) != null){
 					/*
                      * 遍历所有输出流，将该客户端发送的信息转发给所有客户端
+                     * 需要同步
                      */
-				//	System.out.println(socket.getInetAddress()+" : "+br.readLine());
-					for(PrintWriter o : allOut){
-						o.println(socket.getInetAddress()+" : "+message);
-					}
+					sendMessage(message,socket);
 				}
 				
 				
 			}catch(Exception e){
-				e.printStackTrace();
+			//	e.printStackTrace();
 			} finally {
 				/*
                  * 当客户端断线，要将输出流从共享集合中删除
+                 * 需要同步
                  */
-				allOut.remove(pw);
+				removeOut(pw);
 				if(socket != null){
 					try {
 						socket.close();
