@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!-- <constant name="struts.devMode" value="true" /> -->
+    
+    <!-- http://localhost:8080/MySSH_Demo/ssh/person_toLogin.action -->
+    <package name="ssh" namespace="/ssh" extends="struts-default">
+    	<!-- 
+    	 <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results> -->
+
+        <action name="person_*"  class="com.coc.dao.action.PersonAction" method="{1}">
+        	<!-- <result name="login1">/WEB-INF/login1.jsp</result> -->
+        	<result name="login1">/WEB-INF/index.jsp</result>
+        	<result name="error">/WEB-INF/error.jsp</result>
+        	<result name="success">/WEB-INF/success.jsp</result>
+        	<result name="persons">/WEB-INF/person.jsp</result>
+        	<result name="add1">/WEB-INF/add.jsp</result>
+        </action>
+        
+    </package>
+</struts>
